@@ -23,6 +23,7 @@ class CreateSalesTable extends Migration
             $table->integer('deleted_by')->unsigned()->nullable();
             $table->integer('shop_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('edited_by')->references('id')->on('users');
