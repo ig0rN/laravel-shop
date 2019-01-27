@@ -36,12 +36,31 @@ Route::namespace('Auth')
     // Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify');
     // Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
     
-    // Logout
-    Route::get('/logout', 'LoginController@logout')->name('logout');
-    
 
 });
 
-Route::get('/shops', function(){
-    return view('pages.shops-list');
-})->name('shops.list');
+Route::middleware('auth')->group(function(){
+
+    Route::get('/shops', function(){
+        $shops = App\Database\Shop::all();
+        return view('pages.shops', compact('shops'));
+    })->name('shops');
+    
+    // Logout
+    Route::get('/logout', 'LoginController@logout')->name('logout');
+
+    
+    Route::namespace('Admin')->middleware('admin')->prefix('admin')->group(function(){
+
+        // Shop
+        Route::get('/shop', 'ShopController@index')->name('admin.shop');
+        Route::get('/shop/create', 'ShopController@create')->name('admin.shop.create');
+        Route::post('/shop/store', 'ShopController@store')->name('admin.shop.store');
+        Route::get('shop/{shop}/edit', 'ShopController@edit')->name('admin.shop.edit');
+        Route::post('shop/{shop}/edit', 'ShopController@update')->name('admin.shop.update');
+        Route::post('shop/{shop}/delete', 'ShopController@destroy')->name('admin.shop.delete');
+
+    });
+
+});
+

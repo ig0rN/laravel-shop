@@ -30,4 +30,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function isAdmin(){
+        return $this->role->name == 'Admin' ? true : false;
+    }
+
+    public function isWorker(){
+        return $this->role->name == 'Worker' ? true : false;
+    }
 }

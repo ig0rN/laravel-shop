@@ -14,10 +14,10 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->delete();
         DB::table('roles')->insert([
             array(
-                'role' => 'Admin',
+                'name' => 'Admin',
             ),
             array(
-                'role' => 'Worker',
+                'name' => 'Worker',
             )           
         ]);
     }
