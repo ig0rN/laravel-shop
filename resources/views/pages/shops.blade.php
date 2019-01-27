@@ -12,15 +12,21 @@
             </div>
 
             <div class="card-body"> 
-                <form action="">
-
+                <form action="{{ route('shop.pick') }}" method="POST">
+                    @csrf
                     <div class="form-group row">
                         <label for="shop" class="col-sm-4 col-form-label text-md-right">Shop list:</label>
 
                         <div class="col-md-6">
                             <select name="shop" id="" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
-                                <option selected disabled>Chose shop...</option>
-                                <option value="">Shop 1</option>
+                                @if ($shops->count())
+                                    <option selected disabled>Chose shop...</option>
+                                    @foreach ($shops as $shop)
+                                        <option value="{{ $shop->id }}">{{ $shop->name }}</option>
+                                    @endforeach
+                                @else
+                                    <option selected disabled>0 Shop in system. Please, contact Admin</option>
+                                @endif
                             </select>
 
                             @if ($errors->has('shop'))
@@ -38,7 +44,6 @@
                             </button>
                         </div>
                     </div>
-                    
                     
                 </form>
             </div>

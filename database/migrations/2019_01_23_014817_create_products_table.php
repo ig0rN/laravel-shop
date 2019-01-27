@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('created_by')->unsigned();
             $table->integer('edited_by')->unsigned()->nullable();
+            $table->timestamp('edited_at')->nullable();
             $table->integer('deleted_by')->unsigned()->nullable();
             $table->integer('shop_id')->unsigned();
             $table->timestamps();

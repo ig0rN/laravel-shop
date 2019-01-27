@@ -41,17 +41,15 @@ Route::namespace('Auth')
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('/shops', function(){
-        $shops = App\Database\Shop::all();
-        return view('pages.shops', compact('shops'));
-    })->name('shops');
+
+    Route::get('/shops', 'ShopController@showAll')->name('shops');
+    Route::post('/pick-shop', 'ShopController@pickShop')->name('shop.pick');
+    Route::post('/change-shop', 'ShopController@changeShop')->name('shop.change');
     
     // Logout
-    Route::get('/logout', 'LoginController@logout')->name('logout');
-
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     
     Route::namespace('Admin')->middleware('admin')->prefix('admin')->group(function(){
-
         // Shop
         Route::get('/shop', 'ShopController@index')->name('admin.shop');
         Route::get('/shop/create', 'ShopController@create')->name('admin.shop.create');
@@ -61,6 +59,13 @@ Route::middleware('auth')->group(function(){
         Route::post('shop/{shop}/delete', 'ShopController@destroy')->name('admin.shop.delete');
 
     });
+
+    Route::middleware('shop')->prefix('shop')->group(function(){
+
+        Route::get('/', 'ShopController@shop')->name('shop');
+
+    });
+    
 
 });
 

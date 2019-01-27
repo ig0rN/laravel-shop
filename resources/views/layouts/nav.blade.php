@@ -1,5 +1,5 @@
 <div class="container justify-content-center">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand">
         ThinkIT - Shop
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -23,8 +23,8 @@
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         @if (Request::segment(1) != 'shops')
-                            <a class="dropdown-item" href="{{ route('shops') }}">
-                                Change the Shop you're working with
+                            <a class="dropdown-item" href="{{ route('shop.change') }}" onclick="event.preventDefault(); document.getElementById('change-shop-form').submit();">
+                                Pick/Change the Shop you're working with
                             </a>
                         @endif
                         @if (auth()->user()->isAdmin())
@@ -37,6 +37,9 @@
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                        <form id="change-shop-form" action="{{ route('shop.change') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </div>

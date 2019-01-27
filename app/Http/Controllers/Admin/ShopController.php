@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Database\Shop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,7 +38,9 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['created_by' => auth()->user()->id]);
+        $request->merge([
+            'created_by' => auth()->user()->id
+        ]);
         Shop::create($request->all());
         
         return redirect()->route('admin.shop')->with(['success' => 'You have successfully created new shop']);
@@ -74,7 +77,10 @@ class ShopController extends Controller
      */
     public function update(Request $request, Shop $shop)
     {
-        $request->merge(['edited_by' => auth()->user()->id]);
+        $request->merge([
+            'edited_by' => auth()->user()->id,
+            'edited_at' => Carbon::now()
+        ]);
         $shop->update($request->all());
 
         return redirect()->route('admin.shop')->with(['success' => 'You have successfully made changes']);
