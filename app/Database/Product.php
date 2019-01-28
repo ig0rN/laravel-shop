@@ -14,6 +14,12 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
 
+
+    public function scopeAvailableForSale($query)
+    {
+        return $query->where('sale_id', NULL)->get();
+    }
+
     public function getCategoryName()
     {
         return $this->category->name;

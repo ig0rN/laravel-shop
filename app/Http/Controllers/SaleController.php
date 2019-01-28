@@ -27,7 +27,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        $products = getAllBasedOnCurrentShop('products', true)->where('sale_id', NULL)->get();
+        $products = getAllBasedOnCurrentShop('products', true)->availableForSale();
         return view('pages.sale.create', compact('products'));
     }
 
@@ -75,7 +75,7 @@ class SaleController extends Controller
     {
         abort_unless($sale->belongToShop(), 403);
         
-        $products = getAllBasedOnCurrentShop('products', true)->where('sale_id', NULL)->get();
+        $products = getAllBasedOnCurrentShop('products', true)->availableForSale();
         return view('pages.sale.edit', compact('sale', 'products'));
     }
 
