@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Database\Shop;
+use App\Database\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class ShopController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $shops = Shop::all();
-        return view('admin.shop.show', compact('shops'));
+        $shop = Shop::find(session()->get('shop_id'));
+        $categories = $shop->categories;
+        return view('pages.category.show', compact('categories'));
     }
 
     /**
@@ -27,7 +28,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view('admin.shop.create');
+        return view('pages.category.create');
     }
 
     /**
@@ -39,11 +40,12 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-            'created_by' => auth()->user()->id
+            'created_by' => auth()->user()->id,
+            'shop_id' => session()->get('shop_id')
         ]);
-        Shop::create($request->all());
+        Category::create($request->all());
         
-        return redirect()->route('admin.shop')->with(['success' => 'You have successfully created new shop']);
+        return redirect()->route('category')->with(['success' => 'You have successfully created new category']);
     }
 
     /**
@@ -63,9 +65,10 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shop $shop)
+    public function edit(Category $category)
     {
-        return view('admin.shop.edit', compact('shop'));
+        abort_unless($category->belongToShop(), 403);
+        return view('pages.category.edit', compact('category'));
     }
 
     /**
@@ -75,15 +78,17 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
+    public function update(Request $request, Category $category)
     {
+        abort_unless($category->belongToShop(), 403);
+
         $request->merge([
             'edited_by' => auth()->user()->id,
             'edited_at' => Carbon::now()
         ]);
-        $shop->update($request->all());
+        $category->update($request->all());
 
-        return redirect()->route('admin.shop')->with(['success' => 'You have successfully made changes']);
+        return redirect()->route('category')->with(['success' => 'You have successfully made changes']);
     }
 
     /**
@@ -92,13 +97,15 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shop $shop)
+    public function destroy(Category $category)
     {
-        $shop->update([
+        abort_unless($category->belongToShop(), 403);
+
+        $category->update([
             'deleted_by' => auth()->user()->id
         ]);
-        $shop->delete();
+        $category->delete();
         
-        return redirect()->route('admin.shop')->with(['success' => 'You have successfully deleted shop']);
+        return redirect()->route('category')->with(['success' => 'You have successfully deleted category']);
     }
 }

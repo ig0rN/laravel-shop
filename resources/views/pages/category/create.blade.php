@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
-@section('title', 'Update Shop')
+@section('title', 'Create Category')
 
 @section('content')
-<div class="row justify-content-center">
+<div class="row justify-content-center mt-5">
     <div class="col-md-8">
 
         <div class="card">
 
             <div class="card-header">
-                Edit Shop
+                Create Category
             </div>
 
             <div class="card-body">
 
-                <form method="POST" action="{{ route('admin.shop.update', ['shop' => $shop->id]) }}">
+                <form method="POST" action="{{ route('category.store') }}">
 
                     <div class="form-group row">
                         <div class="col-md-6 offset-3">
                             @csrf
-                            <label for="name" class="form-label">Shop name</label>
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $shop->name }}">
+                            <label for="name" class="form-label">Category name</label>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">

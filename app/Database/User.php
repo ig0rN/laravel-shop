@@ -32,10 +32,10 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        return $this->role->name == 'Admin' ? true : false;
+        return $this->role->name == 'Admin';
     }
 
     public function isWorker(){
-        return $this->role->name == 'Worker' ? true : false;
+        return $this->role->name == 'Worker';
     }
 }

@@ -14,9 +14,9 @@
             <div class="card-body"> 
                 <div class="form-group row text-center">
                     <div class="col-md-6 offset-3">
-                        <a href="">Category</a><br>
-                        <a href="">Product</a><br>
-                        <a href="">Sales</a><br>
+                        <a href="{{ route('category') }}">Category</a><br>
+                        <a>Product</a><br> {{-- route('') product --}}
+                        <a>Sale</a><br> {{--  route('')sale --}}
                     </div>
                 </div>
             </div>

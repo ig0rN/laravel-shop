@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Shop list')
+@section('title', 'Category list')
 
 @section('content')
 <div class="row justify-content-center mt-5">
@@ -8,13 +8,13 @@
         <div class="card">
 
             <div class="card-header text-center">
-                    <strong>SHOP LIST:</strong>
+                    <strong>CATEGORY LIST:</strong>
             </div>
 
             <div class="card-body clearfix"> 
                 
                 <div class="float-right">
-                    <a href="{{ route('admin.shop.create') }}" class="btn btn-success">Create New Shop</a>
+                    <a href="{{ route('category.create') }}" class="btn btn-success">Create New Category</a>
                 </div>
 
                 <table id="data-table" class="table table-striped table-bordered">
@@ -25,7 +25,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @include('admin.shop._list')
+                        @include('pages.category._list')
                     </tbody>
                 </table>
             </div>

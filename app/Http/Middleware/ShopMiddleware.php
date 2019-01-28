@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Database\Shop;
 use Closure;
 
 class ShopMiddleware
@@ -15,7 +16,7 @@ class ShopMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!session()->has('shop_id')){
+        if(!session()->has('shop_id') || !Shop::all()->count()){
             return redirect()->route('shops');
         }
         

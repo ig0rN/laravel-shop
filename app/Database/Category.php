@@ -4,10 +4,12 @@ namespace App\Database;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\Trackable;
 
 class Category extends Model
 {
     use SoftDeletes;
+    use Trackable;
 
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
@@ -17,18 +19,8 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function created_by()
+    public function shop()
     {
-        return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function edited_by()
-    {
-        return $this->belongsTo(User::class, 'edited_by');
-    }
-
-    public function deleted_by()
-    {
-        return $this->belongsTo(User::class, 'deleted_by');
+        return $this->belongsTo(Shop::class);
     }
 }

@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function(){
     // Logout
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     
+    // Part for Admin
     Route::namespace('Admin')->middleware('admin')->prefix('admin')->group(function(){
         // Shop
         Route::get('/shop', 'ShopController@index')->name('admin.shop');
@@ -60,9 +61,18 @@ Route::middleware('auth')->group(function(){
 
     });
 
+    // Part for all users
     Route::middleware('shop')->prefix('shop')->group(function(){
 
         Route::get('/', 'ShopController@shop')->name('shop');
+
+        // Category
+        Route::get('/category', 'CategoryController@index')->name('category');
+        Route::get('/category/create', 'CategoryController@create')->name('category.create');
+        Route::post('/category/store', 'CategoryController@store')->name('category.store');
+        Route::get('category/{category}/edit', 'CategoryController@edit')->name('category.edit');
+        Route::post('category/{category}/edit', 'CategoryController@update')->name('category.update');
+        Route::post('category/{category}/delete', 'CategoryController@destroy')->name('category.delete');
 
     });
     
