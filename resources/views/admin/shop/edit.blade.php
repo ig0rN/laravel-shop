@@ -15,10 +15,9 @@
             <div class="card-body">
 
                 <form method="POST" action="{{ route('admin.shop.update', ['shop' => $shop->id]) }}">
-
+                    @csrf
                     <div class="form-group row">
                         <div class="col-md-6 offset-3">
-                            @csrf
                             <label for="name" class="form-label">Shop name</label>
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $shop->name }}">
 
