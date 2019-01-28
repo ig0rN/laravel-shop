@@ -14,6 +14,11 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
 
+    public function getCategoryName()
+    {
+        return $this->category->name;
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

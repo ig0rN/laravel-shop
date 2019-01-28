@@ -74,6 +74,13 @@ Route::middleware('auth')->group(function(){
         Route::post('category/{category}/edit', 'CategoryController@update')->name('category.update');
         Route::post('category/{category}/delete', 'CategoryController@destroy')->name('category.delete');
 
+        // Product
+        Route::get('/product', 'ProductController@index')->name('product');
+        Route::get('/product/create', 'ProductController@create')->name('product.create');
+        Route::post('/product/store', 'ProductController@store')->name('product.store');
+        Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
+        Route::post('product/{product}/edit', 'ProductController@update')->name('product.update');
+        Route::post('product/{product}/delete', 'ProductController@destroy')->name('product.delete');
     });
     
 
