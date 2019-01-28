@@ -15,6 +15,24 @@ class Product extends Model
     protected $dates = ['deleted_at'];
 
 
+    public function getRealPriceAttribute()
+    {
+        if ($this->onSale()) {
+            return "On Sale: " .$this->price * ((100 - $this->sale->discount) / 100);
+        }
+        return $this->price;
+    }
+
+    public function onSale()
+    {
+        if ($this->sale_id != null) {
+            if (!$this->sale->end_date->isPast()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function scopeAvailableForSale($query)
     {
         return $query->where('sale_id', NULL)->get();

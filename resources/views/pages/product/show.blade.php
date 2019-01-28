@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10">
         <div class="card">
 
             <div class="card-header text-center">
@@ -20,6 +20,7 @@
                 <table id="data-table" class="table table-striped table-bordered">
                     <thead>
                         <th>Name</th>
+                        <th>Price</th>
                         <th>Category</th>
                         <th>Created By</th>
                         <th>Edited By</th>

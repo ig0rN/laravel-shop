@@ -1,6 +1,7 @@
 @foreach($products as $product)
 	<tr>
 		<td>{{ $product->name }}</td>
+		<td>{{ $product->realPrice }}</td>
 		<td>{{ $product->getCategoryName() }}</td>
 		<td>{{ $product->createdBy() }}</td>
 		<td>{{ $product->editedBy() }}</td>
