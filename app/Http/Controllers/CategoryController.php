@@ -16,8 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $shop = Shop::find(session()->get('shop_id'));
-        $categories = $shop->categories;
+        $categories = getAllBasedOnCurrentShop('categories');
         return view('pages.category.show', compact('categories'));
     }
 
