@@ -7,7 +7,12 @@
     <div class="col-md-8">
         <div class="card">
 
-            <div class="card-header text-center">
+            <div class="card-header clearfix text-center">
+                <div class="float-left">
+                    <a href="{{ route('shops') }}">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
                 <strong>SHOP PARTS:</strong>
             </div>
 

@@ -7,8 +7,13 @@
     <div class="col-md-8">
         <div class="card">
 
-            <div class="card-header text-center">
-                    <strong>CATEGORY LIST:</strong>
+            <div class="card-header clearfix text-center">
+                <div class="float-left">
+                    <a href="{{ route('shop') }}">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
+                <strong>CATEGORY LIST:</strong>
             </div>
 
             <div class="card-body clearfix"> 

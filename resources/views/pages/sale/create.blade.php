@@ -8,7 +8,12 @@
 
         <div class="card">
 
-            <div class="card-header">
+            <div class="card-header clearfix text-center">
+                <div class="float-left">
+                    <a href="{{ route('sale') }}">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
                 Create Sale
             </div>
 

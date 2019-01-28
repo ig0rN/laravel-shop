@@ -8,7 +8,12 @@
 
         <div class="card">
 
-            <div class="card-header">
+            <div class="card-header clearfix text-center">
+                <div class="float-left">
+                    <a href="{{ route('sale') }}">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
                 Edit Sale
             </div>
 
@@ -82,7 +87,7 @@
             @if($sale->products->count())
             <div class="card">
                 <div class="card-header text-center">
-                    Current products in sale
+                    Current products in this sale
                 </div>
                 <div class="card-body">
                     <table class="table table-dark">
@@ -97,7 +102,7 @@
                             @foreach ($sale->products as $product)
                                 <tr>
                                     <td>{{ $product->name }}</td>
-                                    <td><img src="{{ asset($product->image_path) }}" alt="{{ $product->image_path }}" width="150" height="150"></td>
+                                    <td><img src="{{ asset($product->image_path) }}" alt="{{ $product->image_path }}" width="250"></td>
                                     <td>
                                         <form action="{{ route('sale.product.remove', ['product' => $product->id]) }}" method="POST">
                                             @csrf
