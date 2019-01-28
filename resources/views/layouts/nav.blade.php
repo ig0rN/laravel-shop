@@ -1,5 +1,5 @@
 <div class="container justify-content-center">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="{{ route('shop') }}">
         ThinkIT - Shop
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

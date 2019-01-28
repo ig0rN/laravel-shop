@@ -37,5 +37,5 @@
 @endsection
 
 @section('scripts')
-    @include('admin.add-ons.dataTable')
+    @include('add-ons.dataTable')
 @endsection

@@ -16,7 +16,7 @@
                     <div class="col-md-6 offset-3">
                         <a href="{{ route('category') }}">Category</a><br>
                         <a href="{{ route('product') }}">Product</a><br> 
-                        <a>Sale</a><br> {{--  route('')sale --}}
+                        <a href="{{ route('sale') }}">Sale</a><br>
                     </div>
                 </div>
             </div>
