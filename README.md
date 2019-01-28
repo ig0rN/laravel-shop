@@ -1,5 +1,5 @@
 # Shop Test - Igor Nikolic
-Installation:</br></br>
+Installation guide & useful informations:</br></br>
 1. Clone repository</br>
 2. Create database</br>
 3. Configure .env file for DB</br>
