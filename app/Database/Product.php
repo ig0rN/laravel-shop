@@ -18,7 +18,7 @@ class Product extends Model
     public function isUniqueArticleCode($form_article_code)
     {
         if ($this->article_code != $form_article_code) {
-            if (static::where('article_code', $form_article_code)->first() !== null) {
+            if (self::where('article_code', $form_article_code)->first() !== null) {
                 return false;
             }
         }
