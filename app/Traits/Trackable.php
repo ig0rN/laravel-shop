@@ -37,7 +37,7 @@ trait Trackable
     {
         $instance = Carbon::parse($date);
         // task says that date format should be like this "dd/mm/yyyy (03/01/2019)" but I added hours and minutes on that format because that can be really important in some situations
-        return $instance->format('d/m/Y in H:i');
+        return $instance->format('d/m/Y'). ' in ' .$instance->format('H:i');
     }
 
     public function created_by_user()
