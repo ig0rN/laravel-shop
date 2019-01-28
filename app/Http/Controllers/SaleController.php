@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Database\Sale;
 use App\Database\Product;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Http\Requests\Sale\StoreRequest;
+use App\Http\Requests\Sale\UpdateRequest;
 
 class SaleController extends Controller
 {
@@ -37,7 +38,7 @@ class SaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $request->merge([
             'created_by' => auth()->user()->id,
@@ -86,7 +87,7 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update(UpdateRequest $request, Sale $sale)
     {
         abort_unless($sale->belongToShop(), 403);
 

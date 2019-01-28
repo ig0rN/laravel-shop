@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Database\Shop;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Http\Requests\Shop\AdminRequest;
 use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
@@ -36,7 +36,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
         $request->merge([
             'created_by' => auth()->user()->id
@@ -75,7 +75,7 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
+    public function update(AdminRequest $request, Shop $shop)
     {
         $request->merge([
             'edited_by' => auth()->user()->id,

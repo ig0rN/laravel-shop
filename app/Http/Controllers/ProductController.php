@@ -6,7 +6,8 @@ use App\Database\Shop;
 use App\Database\Product;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
 
 class ProductController extends Controller
 {
@@ -38,7 +39,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $dbPath = uploadFileInPublicFolder($request->file('image'), $request->name, '/img/products/');
 
@@ -84,9 +85,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateRequest $request, Product $product)
     {
         abort_unless($product->belongToShop(), 403);
+        // Request class doesn't know how to solve unique on update
+        if(!$product->isUniqueArticleCode($request->article_code)){
+            return redirect()->back()->with(['error' => 'Article Code MUST be UNIQUE']);
+        }
+        
 
         if(isset($request->image)){
             File::delete(public_path($product->image_path));

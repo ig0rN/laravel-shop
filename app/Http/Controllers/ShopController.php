@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Database\Shop;
-use Illuminate\Http\Request;
+use App\Http\Requests\Shop\PickRequest;
 
 class ShopController extends Controller
 {
@@ -13,7 +13,7 @@ class ShopController extends Controller
         return view('pages.shops', compact('shops'));
     }
 
-    public function pickShop(Request $request)
+    public function pickShop(PickRequest $request)
     {
         session()->put(['shop_id' => $request->shop]);
 

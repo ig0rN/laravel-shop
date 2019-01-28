@@ -18,7 +18,7 @@
                         <label for="shop" class="col-sm-4 col-form-label text-md-right">Shop list:</label>
 
                         <div class="col-md-6">
-                            <select name="shop" id="" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+                            <select name="shop" id="shop" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}">
                                 @if ($shops->count())
                                     <option selected disabled>Chose shop...</option>
                                     @foreach ($shops as $shop)
