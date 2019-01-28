@@ -88,11 +88,11 @@ class ProductController extends Controller
     public function update(UpdateRequest $request, Product $product)
     {
         abort_unless($product->belongToShop(), 403);
+        
         // Request class doesn't know how to solve unique on update
         if(!$product->isUniqueArticleCode($request->article_code)){
             return redirect()->back()->with(['error' => 'Article Code MUST be UNIQUE']);
         }
-        
 
         if(isset($request->image)){
             File::delete(public_path($product->image_path));
