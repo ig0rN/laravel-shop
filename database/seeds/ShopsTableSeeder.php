@@ -13,11 +13,11 @@ class ShopsTableSeeder extends Seeder
     public function run()
     {
         Shop::create([
-            'name' => 'Shop1',
+            'name' => 'Napoli Pizza',
             'created_by' => 1
         ]);
         Shop::create([
-            'name' => 'Shop2',
+            'name' => 'Water Vehicle',
             'created_by' => 2
         ]);
     }
