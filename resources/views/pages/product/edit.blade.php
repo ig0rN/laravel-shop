@@ -100,7 +100,7 @@
             </div>
             <div class="card">
                 <div class="card-body" style="margin: 0 auto;">
-                    <img src="{{ asset($product->image_path) }}" alt="{{ $product->image_path }}">
+                    <img src="{{ asset($product->image_path) }}" alt="{{ $product->image_path }}" width="650">
                 </div>
             </div>
             
