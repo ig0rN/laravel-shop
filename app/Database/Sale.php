@@ -12,5 +12,15 @@ class Sale extends Model
     use Trackable;
 
     protected $guarded = ['id'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['end_date', 'deleted_at'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('image_path');
             
             $table->integer('category_id')->unsigned();
+            $table->integer('sale_id')->unsigned()->nullable();
             $table->integer('created_by')->unsigned();
             $table->integer('edited_by')->unsigned()->nullable();
             $table->timestamp('edited_at')->nullable();
@@ -31,6 +32,7 @@ class CreateProductsTable extends Migration
             $table->softDeletes();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sale_id')->references('id')->on('sales')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('edited_by')->references('id')->on('users');
             $table->foreign('deleted_by')->references('id')->on('users');

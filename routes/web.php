@@ -81,6 +81,15 @@ Route::middleware('auth')->group(function(){
         Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
         Route::post('product/{product}/edit', 'ProductController@update')->name('product.update');
         Route::post('product/{product}/delete', 'ProductController@destroy')->name('product.delete');
+        
+        // Sale
+        Route::get('/sale', 'SaleController@index')->name('sale');
+        Route::get('/sale/create', 'SaleController@create')->name('sale.create');
+        Route::post('/sale/store', 'SaleController@store')->name('sale.store');
+        Route::get('sale/{sale}/edit', 'SaleController@edit')->name('sale.edit');
+        Route::post('sale/{sale}/edit', 'SaleController@update')->name('sale.update');
+        Route::post('sale/{sale}/delete', 'SaleController@destroy')->name('sale.delete');
+        Route::post('sale/{product}/remove', 'SaleController@removeFromSale')->name('sale.product.remove');
     });
     
 
