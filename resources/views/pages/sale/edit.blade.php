@@ -17,55 +17,57 @@
                 <form method="POST" action="{{ route('sale.update', ['sale' => $sale->id]) }}">
                     @csrf
                     <div class="form-group row">
-                            <div class="col-md-4">
-                                <label for="name" class="form-label">Name</label>
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $sale->name }}">
-    
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-4">
-                                <label for="discount" class="form-label">Discount in %</label>
-                                <input id="discount" type="integer" min=0 class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" name="discount" value="{{ $sale->discount }}">
-    
-                                @if ($errors->has('discount'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('discount') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-4">
-                                <label for="end_date_srb" class="form-label">End Date</label>
-                                <input id="end_date_srb" type="text" class="form-control date{{ $errors->has('end_date_srb') ? ' is-invalid' : '' }}" name="end_date_srb" value="{{ $sale->end_date->format('d/m/Y') }}">
-    
-                                @if ($errors->has('end_date_srb'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('end_date_srb') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="col-md-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $sale->name }}">
+
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-3">
-                                <label for="product_id" class="form-label">Products</label>
-                                <select name="product_id[]" id="product_id" class="form-control{{ $errors->has('product_id') ? ' is-invalid' : '' }}" multiple>
-                                    <option selected disabled>I don't want to add new product in sale</option>
-                                    @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                    @endforeach
-                                </select>
-                                <p class="text-muted">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-    
-                                @if ($errors->has('product_id'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('product_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="col-md-4">
+                            <label for="discount" class="form-label">Discount in %</label>
+                            <input id="discount" type="integer" min=0 class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" name="discount" value="{{ $sale->discount }}">
+
+                            @if ($errors->has('discount'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('discount') }}</strong>
+                                </span>
+                            @endif
                         </div>
+                        <div class="col-md-4">
+                            <label for="end_date_srb" class="form-label">End Date</label>
+                            <input id="end_date_srb" type="text" class="form-control date{{ $errors->has('end_date_srb') ? ' is-invalid' : '' }}" name="end_date_srb" value="{{ $sale->end_date->format('d/m/Y') }}">
+
+                            @if ($errors->has('end_date_srb'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('end_date_srb') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-3">
+                            <label for="product_id" class="form-label">Products</label>
+                            <select name="product_id[]" id="product_id" class="form-control{{ $errors->has('product_id') ? ' is-invalid' : '' }}" multiple>
+                                <option selected disabled>I don't want to add new product in sale</option>
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endforeach
+                            </select>
+                            <p class="text-muted">Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
+
+                            @if ($errors->has('product_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('product_id') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    @include('errors')
                     
                     <div class="form-group row">
                         <div class="col-md-6 offset-3 text-center">

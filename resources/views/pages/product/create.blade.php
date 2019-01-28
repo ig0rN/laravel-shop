@@ -87,6 +87,8 @@
                             @endif
                         </div>
                     </div>
+
+                    @include('errors')
                     
                     <div class="form-group row">
                         <div class="col-md-6 offset-3 text-center">

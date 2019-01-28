@@ -19,7 +19,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 offset-3">
                             <label for="name" class="form-label">Category name</label>
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}">
 
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">

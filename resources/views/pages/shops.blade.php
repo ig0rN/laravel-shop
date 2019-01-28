@@ -28,12 +28,9 @@
                                     <option selected disabled>0 Shop in system. Please, contact Admin</option>
                                 @endif
                             </select>
-
-                            @if ($errors->has('shop'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('shop') }}</strong>
-                                </span>
-                            @endif
+                            
+                            @include('errors')
+                            
                         </div>
                     </div>
 
