@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Database\Shop;
 use App\Database\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
