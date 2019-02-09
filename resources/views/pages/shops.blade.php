@@ -8,7 +8,7 @@
         <div class="card">
 
             <div class="card-header text-center">
-                <strong>Hello User, please select the shop you will be working with</strong>
+                <strong>Hello {{ auth()->user()->name }}, please select the shop you will be working with</strong>
             </div>
 
             <div class="card-body"> 
