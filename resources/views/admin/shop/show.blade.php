@@ -11,9 +11,9 @@
                     <strong>SHOP LIST:</strong>
             </div>
 
-            <div class="card-body clearfix"> 
+            <div class="card-body"> 
                 
-                <div class="float-right">
+                <div class="text-right mb-2">
                     <a href="{{ route('admin.shop.create') }}" class="btn btn-success">Create New Shop</a>
                 </div>
 
