@@ -16,9 +16,9 @@
                 <strong>CATEGORY LIST:</strong>
             </div>
 
-            <div class="card-body clearfix"> 
+            <div class="card-body"> 
                 
-                <div class="float-right">
+                <div class="text-right mb-2">
                     <a href="{{ route('category.create') }}" class="btn btn-success">Create New Category</a>
                 </div>
 

@@ -8,6 +8,6 @@
             } );
         
             table.buttons().container()
-                .prependTo( '#data-table_wrapper' );
+                .prependTo( '.add-button' );
         } );
 </script>

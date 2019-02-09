@@ -16,9 +16,9 @@
                 <strong>PRODUCT LIST:</strong>
             </div>
 
-            <div class="card-body clearfix"> 
+            <div class="card-body"> 
                 
-                <div class="float-right">
+                <div class="text-right mb-2">
                     <a href="{{ route('product.create') }}" class="btn btn-success">Create New Product</a>
                 </div>
 
