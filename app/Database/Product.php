@@ -28,7 +28,7 @@ class Product extends Model
     public function getRealPriceAttribute()
     {
         if ($this->onSale()) {
-            return "On Sale: " .$this->price * ((100 - $this->sale->discount) / 100);
+            return $this->sale->discount. "% On Sale: " .$this->price * ((100 - $this->sale->discount) / 100);
         }
         return $this->price;
     }
