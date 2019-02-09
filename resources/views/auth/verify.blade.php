@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Verify Account - Trip Tracker   
+Verify Account - Shop Manager   
 @endsection
 
 

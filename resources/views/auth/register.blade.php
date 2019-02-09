@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Register - Trip Tracker   
+Register - Shop Manager   
 @endsection
 
 @section('content')
