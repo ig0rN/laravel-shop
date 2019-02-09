@@ -1,7 +1,13 @@
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('DataTables/datatables.min.css') }}"/>
+<script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script>
     <script>
-        $(document).ready( function () {
-            $('#data-table').DataTable();
+        $(document).ready(function() {
+            var table = $('#data-table').DataTable( {
+                lengthChange: false,
+                buttons: [ 'copy', 'excel', 'pdf' ]
+            } );
+        
+            table.buttons().container()
+                .prependTo( '#data-table_wrapper' );
         } );
 </script>
